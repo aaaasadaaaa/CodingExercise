@@ -1,0 +1,7 @@
+spantree_ref是参考程序，请把你的spantree生成文件放在同一文件夹中，运行./test.sh
+因为参考程序会报错，数据生成的时候也有可能出现一些我没有想到的非法的数据
+如果出错了可以再运行一遍
+运行之后在文件夹中会生成roads_input（随机产生的输入）output_your_program output_reference
+还有用 graphviz package 生成的图像 reference.ps your_program.ps
+请先安装 graphviz package！
+不怎么接触shell编程。。欢迎和我交流bug。。

@@ -1,0 +1,19 @@
+You are free to choose NOT to use it.
+Because may have wrong standard output  
+
+1.COPY YOUR makefile calendar in this folder
+2.and run ./test.sh
+
+the input folder : random inputs
+the output folder : "standard" output
+the YourOut folder : your fancy output
+4 cases in each folders and 100 random testcases for each case
+
+test.sh will check out your outputs and the ones in output folder
+
+You can copy the calendar you trust in this folder and run ./gen.sh to get new standard output
+You may wait for several seconds to generate 100 new standard output for each case
+
+goodluck. hope you will AC ASAP. 
+
+BY JEFF :A CHICKEN 

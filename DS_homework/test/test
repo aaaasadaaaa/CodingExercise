@@ -1,0 +1,57 @@
+.data
+test_buffer:	.word 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF
+		.word 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF
+		.word 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF
+		.word 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF
+		.word 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF 0xFFFFFFFF
+test_str1:		.asciiz "a9bw enijn webb"
+.text
+main:
+	la $a0, test_str1
+	jal copy_of_str
+	move $a0, $v0
+	li $v0, 4
+	syscall
+	li $v0, 10
+	syscall
+copy_of_str:
+	addi $sp, $sp, -4
+	sw $ra, 0($sp)
+	move $s4, $a0
+	jal strlen
+	addi $a0, $v0, 1
+	li $v0, 9
+	syscall
+	move $a2, $a0
+	move $a0, $v0
+	move $a1, $s4
+	jal strncpy
+	# YOUR CODE HERE
+	lw $ra, 0($sp)
+	jr $ra
+strncpy:
+	lb $t8, 0($a1)
+	sb $t8, 0($a0)
+	addi $a2, $a2, -1
+
+	bne $a2, 0, continuecp
+	sub $a0, $a0, $s2
+	# YOUR CODE HERE
+	jr $ra
+
+continuecp:
+	addi $s2, $s2, 1
+	addiu $a0, $a0, 1
+	addiu $a1, $a1, 1
+	j strncpy
+strlen:
+	lb $t8, 0($a0)
+	bne $t8, $0, continue 
+	move $v0, $a1
+	li $a1, 0
+	# YOUR CODE HERE
+	jr $ra
+continue:
+	addiu $a0, $a0, 1
+	addiu $a1, $a1, 1
+	j strlen

@@ -1,0 +1,2 @@
+hash1是陈浩的标准程序,把make完的hash放在这个文件夹里然后在命令行输入./test.sh 就好了
+别忘了chmod
